@@ -1,4 +1,4 @@
-# data_exporter
+# Drupal Data Exporter
 Export Drupal data in CSV format
 
 Example drush command:
