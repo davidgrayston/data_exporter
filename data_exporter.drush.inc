@@ -45,9 +45,16 @@ function _data_exporter_export_nodes() {
 
   // Output as CSV.
   $out = fopen('php://output', 'w');
-  while ($row = $result->fetchAssoc()) {
-    fputcsv($out, $row);
+
+  if ($row = $result->fetchAssoc()) {
+    // Add headings.
+    fputcsv($out, array_keys($row));
+    // Add rows.
+    do {
+      fputcsv($out, $row);
+    } while ($row = $result->fetchAssoc());
   }
+
   fclose($out);
 }
 
